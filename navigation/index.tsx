@@ -5,13 +5,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
 import { View } from '../components/Themed';
-import {Octicons, MaterialCommunityIcons,  Feather} from '@expo/vector-icons';
+import {
+  Octicons,
+  MaterialCommunityIcons,
+  Feather,
+  MaterialIcons,
+  FontAwesome5,
+} from '@expo/vector-icons';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import ChatsScreen from '../screens/ChatsScreen';
+import ChatRoomScreen from '../screens/ChatRoomScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -53,12 +60,32 @@ function RootNavigator() {
             justifyContent : 'space-between',
             marginRight : 10
           }}>
-            <Octicons name='search' size={24} color = "#fff" />
-            <MaterialCommunityIcons name = "dots-vertical" size={24} color = "#fff"/>
+            <Octicons name='search' size={22} color = "#fff" />
+            <MaterialCommunityIcons name = "dots-vertical" size={22} color = "#fff"/>
           </View>
         )
     }} />
-    <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen
+        name="ChatRoom"
+        component={ChatRoomScreen}
+        options={({ route })  => ({
+          title: route.params.name,
+          headerRight: () => (
+            <View style={{
+              flexDirection: 'row',
+              width: 100,
+              justifyContent: 'space-between',
+              marginRight: 10,
+              backgroundColor : 'transparent'
+            }}>
+              <FontAwesome5 name="video" size={22} color={'white'} />
+              <MaterialIcons name="call" size={22} color={'white'} />
+              <MaterialCommunityIcons name="dots-vertical" size={22} color={'white'} />
+            </View>
+          )
+        })}
+      />
+
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Group>
@@ -78,21 +105,7 @@ function BottomTabNavigator() {
         component={ChatsScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
           title: "",
-          tabBarIcon: ({ color }) => <Feather name="message-square" size={24} color="#fff" />,
-          headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Modal')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}>
-              <FontAwesome
-                name="info-circle"
-                size={25}
-                color={Colors[colorScheme].text}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
-          ),
+          tabBarIcon: ({ color }) => <Feather name="message-square" size={22} color="#000" />,
         })}
       />
     </BottomTab.Navigator>

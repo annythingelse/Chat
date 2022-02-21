@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { wrap } from "module";
 
 const styles = StyleSheet.create({
     container : {
@@ -13,17 +14,16 @@ const styles = StyleSheet.create({
         justifyContent : "space-around"
     },
     username : {
-        color : '#fff',
+        color : '#000',
         fontWeight : 'bold',
         fontSize : 16
     },
     lastmessage : {
         fontSize : 16,
         color: 'gray',
-        flex : 1
     },
     time : {
-        fontSize : 16,
+        fontSize : 14,
         color: 'gray'
     },
     avatar : {
