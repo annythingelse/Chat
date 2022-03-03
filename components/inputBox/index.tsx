@@ -11,15 +11,15 @@ import {
 
 const InputBox = () => {
 
-    const [message, setMessage] = useState(initialState: '');
+    const [message, setMessage] = useState('');
 
     const onMicrophonePress = () => {
-        console.warn(message:'Microphone' );
+        console.warn('Microphone' );
          
     }
     const onSendPress = () => {
-        console.warn(message: `Sending: ${message}`);
-        setMessage(value:'');
+        console.warn( `Sending: ${message}`);
+        setMessage('');
          
     }
 
