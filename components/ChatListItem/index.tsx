@@ -1,10 +1,11 @@
 import React from "react";
 import {
     View,
-    Text,
     Image,
     TouchableWithoutFeedback
 } from "react-native";
+import { Text } from '../Themed';
+
 import moment from "moment";
 import { ChatRoom } from "../../types";
 import styles from "./style";
@@ -29,12 +30,14 @@ const ChatListItem = (props: ChatListItemProps) => {
     }
 
     return (
-        <TouchableWithoutFeedback onPress={onClick}>
+        <TouchableWithoutFeedback onPress={onClick} >
          <View style={styles.container}>
              <View style={styles.leftContainer}>
                 <Image source = {{uri: user.imageUri}} style={styles.avatar}/>
                 <View style={styles.midContainer}>
-                    <Text style={styles.username}>{user.name}</Text>
+                    <Text style={styles.username}
+                        lightColor="#000"
+                        darkColor="#fff">{user.name}</Text>
                     <Text numberOfLines={2} style={styles.lastmessage}>{chatRoom.lastMessage.content}</Text>
                 </View>
              </View>

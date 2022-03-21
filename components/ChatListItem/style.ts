@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         flexDirection : 'row',
         justifyContent: "space-between",
         padding : 10,
+    
     },
     leftContainer : {
         flexDirection : 'row',
@@ -14,7 +15,6 @@ const styles = StyleSheet.create({
         justifyContent : "space-around"
     },
     username : {
-        color : '#000',
         fontWeight : 'bold',
         fontSize : 16
     },
